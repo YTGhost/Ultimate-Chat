@@ -1,0 +1,31 @@
+.login-bg{
+    /*-fx-background-color: linear-gradient(to top,#c31399,#9118fd);*/
+    /*-fx-background-image:url("/resource/image/1.jpg");*/
+}
+.btn-login{
+    -fx-background-color: #9013fb;
+    -fx-font-weight: 600;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-background-radius: 8px;
+}
+.lbl-status{
+    -fx-background-color: #c0139f;
+    -fx-text-fill: #FFFFFF;
+    -fx-alignment: center;
+    -fx-font-size: 16px;
+    -fx-background-radius: 8px;
+}
+.lbl-user{
+    -fx-alignment: center
+}
+.tab-pane{
+    -fx-tab-max-height: 0px;
+}
+.tab-pane .tab-header-area{
+    visibility: hidden;
+}
+.account-bg{
+    /*-fx-background-color: linear-gradient(to top,#0082bc,#01d8db);*/
+    /*-fx-background-image:url("/resource/image/1.jpg");*/
+}
