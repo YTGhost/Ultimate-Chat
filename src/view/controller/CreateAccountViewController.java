@@ -43,13 +43,7 @@ public class CreateAccountViewController implements Initializable {
     private JFXTextField usernameField;
 
     @FXML
-    private JFXComboBox<String> leverComboBox;
-
-    @FXML
     private AnchorPane anchorPane;
-
-    @FXML
-    private JFXTextField emailField;
 
     @FXML
     private JFXPasswordField passwordField;
@@ -62,15 +56,6 @@ public class CreateAccountViewController implements Initializable {
 
     @FXML
     private JFXDatePicker birthdayPicker;
-
-    @FXML
-    private JFXTextField firstnameField;
-
-    @FXML
-    private JFXTextField lastnameField;
-
-    @FXML
-    private JFXTextField idField;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -96,50 +81,12 @@ public class CreateAccountViewController implements Initializable {
             }
         });
 
-        firstnameField.getValidators().add(requiredFieldValidator);
-        firstnameField.focusedProperty().addListener((o, oldVal,newval) ->{
-            if (!newval){
-                firstnameField.validate();
-            }
-        });
-
-        lastnameField.getValidators().add(requiredFieldValidator);
-        lastnameField.focusedProperty().addListener((o, oldVal,newval) ->{
-            if (!newval){
-                lastnameField.validate();
-            }
-        });
-
-        idField.getValidators().add(requiredFieldValidator);
-        idField.focusedProperty().addListener((o, oldVal,newval) ->{
-            if (!newval){
-                idField.validate();
-            }
-        });
-
-        emailField.getValidators().add(requiredFieldValidator);
-        emailField.focusedProperty().addListener((o, oldVal,newval) ->{
-            if (!newval){
-                emailField.validate();
-            }
-        });
-
         birthdayPicker.getValidators().add(requiredFieldValidator);
         birthdayPicker.focusedProperty().addListener((o, oldVal,newval) ->{
             if (!newval){
                 birthdayPicker.validate();
             }
         });
-
-        leverComboBox.getValidators().add(requiredFieldValidator);
-        leverComboBox.focusedProperty().addListener((o, oldVal,newval) ->{
-            if (!newval){
-                leverComboBox.validate();
-            }
-        });
-
-        leverComboBox.getItems().add("User");
-        leverComboBox.getItems().add("Admin");
     }
 
     @FXML
@@ -170,7 +117,6 @@ public class CreateAccountViewController implements Initializable {
         String username = usernameField.getText();
         String password = BCrypt.hashpw(passwordField.getText(), BCrypt.gensalt());
         String verify = verifyField.getText();
-        String email = emailField.getText();
         String birthday = null;
         try {
             birthday = birthdayPicker.getValue().toString();
@@ -182,10 +128,6 @@ public class CreateAccountViewController implements Initializable {
             alert.showAndWait();
             return;
         }
-        String userLever = leverComboBox.getValue();
-        String firstname = firstnameField.getText();
-        String lastname = lastnameField.getText();
-        String idnumber = idField.getText();
         if (username.equals("")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
@@ -204,51 +146,6 @@ public class CreateAccountViewController implements Initializable {
             return;
         }
 
-        if (email.equals("")) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText("You don't put email");
-            alert.setContentText("Please put email into TextField");
-            alert.showAndWait();
-            return;
-        }
-
-        if (userLever == null) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText("You don't put userLever");
-            alert.setContentText("Please put userLever into TextField");
-            alert.showAndWait();
-            return;
-        }
-
-        if (firstname.equals("")) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText("You don't put firstname");
-            alert.setContentText("Please put firstname into TextField");
-            alert.showAndWait();
-            return;
-        }
-
-        if (lastname.equals("")) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText("You don't put lastname");
-            alert.setContentText("Please put lastname into TextField");
-            alert.showAndWait();
-            return;
-        }
-
-        if (idnumber.equals("")) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText("You don't put idnumber");
-            alert.setContentText("Please put idnumber into TextField");
-            alert.showAndWait();
-            return;
-        }
-
         if (!BCrypt.checkpw(verify, password)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
@@ -257,7 +154,7 @@ public class CreateAccountViewController implements Initializable {
             alert.showAndWait();
             return;
         }
-        Manager.getManager().out("CREATEUser" + " " + userLever + " " + username + " " + password + " " + email + " " + birthday + " " + firstname + " " + lastname + " " + idnumber);
+        Manager.getManager().out("CREATEUser" + " " + " " + username + " " + password + " " + " " + birthday);
         String content = null;
         while ((content = Manager.getManager().in()) != null) {
             StringTokenizer parse = new StringTokenizer(content, " ");

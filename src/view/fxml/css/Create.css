@@ -1,0 +1,74 @@
+.account-bg{
+    -fx-background-color: linear-gradient(to top,#0082bc,#01d8db);
+    /*-fx-background-image:url("/resource/image/3.jpg");*/
+}
+
+.btn-login{
+    -fx-background-color: #0082bc;
+    -fx-font-weight: 600;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-background-radius: 8px;
+}
+
+#Account{
+    -fx-background-image: url("/resource/image/user.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px center;
+}
+#Password{
+    -fx-background-image: url("/resource/image/lock.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px center;
+}
+#Verify{
+    -fx-background-image: url("/resource/image/lock.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px center;
+}
+#Telephone{
+    -fx-background-image: url("/resource/image/telephone.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px center;
+}
+#Calendar{
+    -fx-background-image: url("/resource/image/calendar.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px center;
+}
+
+
+#Account:focused
+{
+    -fx-background-image: url("/resource/image/user-focused.png");
+    -fx-background-radius: 20px;
+    -fx-background-color: white;
+    -fx-border-radius: 20px;
+    -fx-border-color: transparent;
+}
+#Password:focused
+{
+    -fx-background-image: url("/resource/image/lock-focused.png");
+    -fx-background-radius: 20px;
+    -fx-background-color: white;
+    -fx-border-radius: 20px;
+    -fx-border-color: transparent;
+}
+#Verify:focused
+{
+    -fx-background-image: url("/resource/image/lock-focused.png");
+    -fx-background-radius: 20px;
+    -fx-background-color: white;
+    -fx-border-radius: 20px;
+    -fx-border-color: transparent;
+}
+#Telephone:focused{
+    -fx-background-image: url("/resource/image/telephone-focused.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px center;
+}
+#Calendar:focused{
+    -fx-background-image: url("/resource/image/calendar-focused.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px center;
+}

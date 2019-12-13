@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gn.GNAvatarView?>
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="644.0" prefWidth="940.0" styleClass="account-bg" stylesheets="@css/Login-Create.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.CreateAccountViewController">
+<AnchorPane fx:id="anchorPane" prefHeight="644.0" prefWidth="940.0" styleClass="account-bg" stylesheets="@css/Create.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.CreateAccountViewController">
    <children>
-      <AnchorPane layoutX="472.0" layoutY="54.0" prefHeight="548.0" prefWidth="388.0" style="-fx-background-color: #FFF; -fx-background-radius: 10px;">
+      <AnchorPane layoutX="89.0" layoutY="54.0" prefHeight="548.0" prefWidth="771.0" style="-fx-background-color: #FFF; -fx-background-radius: 10px;">
          <children>
-            <Label fx:id="lblLogin" alignment="CENTER" contentDisplay="CENTER" layoutX="84.0" layoutY="514.0" onMouseClicked="#openLoginScene" prefHeight="20.0" prefWidth="221.0" text="I have Account, Log In Now!" textFill="#c3189d">
+            <Label fx:id="lblLogin" alignment="CENTER" contentDisplay="CENTER" layoutX="256.0" layoutY="514.0" onMouseClicked="#openLoginScene" prefHeight="20.0" prefWidth="221.0" text="I have Account, Log In Now!" textFill="#0082bc">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -23,49 +24,50 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="usernameField" focusColor="#e432e4" labelFloat="true" layoutX="61.0" layoutY="36.0" prefHeight="30.0" prefWidth="267.0" promptText="Username">
+            <JFXTextField id="Account" fx:id="usernameField" focusColor="#01d8db" labelFloat="true" layoutX="398.0" layoutY="84.0" prefHeight="30.0" prefWidth="267.0" promptText="Username">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
             </JFXTextField>
-            <JFXButton fx:id="createButton" layoutX="127.0" layoutY="454.0" onKeyPressed="#pressCreate" onMouseClicked="#clickCreate" prefHeight="51.0" prefWidth="138.0" styleClass="btn-login" text="CREATE" />
-            <JFXTextField fx:id="emailField" focusColor="#cc27c7" labelFloat="true" layoutX="63.0" layoutY="329.0" prefHeight="30.0" prefWidth="267.0" promptText="Email">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </JFXTextField>
-            <JFXComboBox fx:id="leverComboBox" focusColor="#e432e4" labelFloat="true" layoutX="62.0" layoutY="414.0" prefHeight="30.0" prefWidth="267.0" promptText="User Lever" />
-            <Label layoutX="120.0" layoutY="14.0" text="CREATE ACCOUNT" textFill="#d30ae5">
+            <JFXButton fx:id="createButton" layoutX="298.0" layoutY="447.0" onKeyPressed="#pressCreate" onMouseClicked="#clickCreate" prefHeight="51.0" prefWidth="138.0" styleClass="btn-login" text="CREATE" />
+            <Label layoutX="311.0" layoutY="14.0" text="CREATE ACCOUNT" textFill="#0082bc">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <JFXPasswordField fx:id="passwordField" focusColor="#cc27c7" labelFloat="true" layoutX="62.0" layoutY="84.0" prefHeight="30.0" prefWidth="267.0" promptText="Password">
+            <JFXPasswordField id="Password" fx:id="passwordField" focusColor="#01d8db" labelFloat="true" layoutX="398.0" layoutY="136.0" prefHeight="30.0" prefWidth="267.0" promptText="Password">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
             </JFXPasswordField>
-            <JFXDatePicker fx:id="birthdayPicker" defaultColor="#e432e4" layoutX="63.0" layoutY="374.0" prefHeight="30.0" prefWidth="267.0" promptText="pick your birthday" />
-            <JFXPasswordField fx:id="verifyField" focusColor="#cc27c7" labelFloat="true" layoutX="61.0" layoutY="132.0" prefHeight="30.0" prefWidth="267.0" promptText="Verify">
+            <JFXDatePicker id="Calendar" fx:id="birthdayPicker" defaultColor="#01d8db" layoutX="398.0" layoutY="357.0" prefHeight="30.0" prefWidth="267.0" promptText="pick your birthday">
+               <padding>
+                  <Insets left="30.0" />
+               </padding></JFXDatePicker>
+            <JFXPasswordField id="Verify" fx:id="verifyField" focusColor="#01d8db" labelFloat="true" layoutX="398.0" layoutY="251.0" prefHeight="30.0" prefWidth="267.0" promptText="Verify">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
             </JFXPasswordField>
-            <JFXTextField fx:id="firstnameField" focusColor="#e432e4" labelFloat="true" layoutX="63.0" layoutY="182.0" prefHeight="30.0" prefWidth="267.0" promptText="Firstname">
+            <GNAvatarView layoutX="82.0" layoutY="67.0" prefHeight="138.0" prefWidth="150.0" />
+            <JFXPasswordField id="Telephone" fx:id="telephoneField" focusColor="#01d8db" labelFloat="true" layoutX="398.0" layoutY="304.0" prefHeight="30.0" prefWidth="267.0" promptText="Telephone">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
-            </JFXTextField>
-            <JFXTextField fx:id="lastnameField" focusColor="#e432e4" labelFloat="true" layoutX="63.0" layoutY="230.0" prefHeight="30.0" prefWidth="267.0" promptText="Lastname">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </JFXTextField>
-            <JFXTextField fx:id="idField" focusColor="#e432e4" labelFloat="true" layoutX="63.0" layoutY="284.0" prefHeight="30.0" prefWidth="267.0" promptText="ID number">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </JFXTextField>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </JFXPasswordField>
+            <JFXButton layoutX="129.0" layoutY="221.0" styleClass="btn-login" text="Load" />
          </children>
          <effect>
             <DropShadow color="#1e0213" />

@@ -1,5 +1,6 @@
 package view.controller;
 
+import com.gn.GNAvatarView;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -57,15 +58,6 @@ public class LoginViewController implements Initializable {
     @FXML // fx:id="lblCreateAccount"
     private Label lblCreateAccount; // Value injected by FXMLLoader
 
-    @FXML // fx:id="lblAdmin"
-    private Label lblAdmin; // Value injected by FXMLLoader
-
-    @FXML // fx:id="lblStatus"
-    private Label lblStatus; // Value injected by FXMLLoader
-
-    @FXML // fx:id="tabPaneLogin"
-    private TabPane tabPaneLogin; // Value injected by FXMLLoader
-
     @FXML
     public StackPane rootPane;
 
@@ -79,15 +71,6 @@ public class LoginViewController implements Initializable {
     private JFXPasswordField userPasswordTextField;
 
     @FXML
-    private JFXTextField adminNameTextField;
-
-    @FXML
-    private JFXPasswordField adminPasswordTextField;
-
-    @FXML
-    private JFXButton adminLoginButtion;
-
-    @FXML
     private ImageView closeImageView;
 
     @FXML
@@ -95,6 +78,9 @@ public class LoginViewController implements Initializable {
 
     @FXML
     private Label lblForgetPassword;
+
+    @FXML
+    private GNAvatarView avatarView;
 
     @FXML
     void openForgetPasswordScene(MouseEvent event){
@@ -214,32 +200,11 @@ public class LoginViewController implements Initializable {
         System.exit(0);
     }
 
-    @FXML
-    void openUserTab(MouseEvent event) {
-        TranslateTransition toRightAnimation = new TranslateTransition(new Duration(500), lblStatus);
-        toRightAnimation.setToX(slidingPane.getTranslateX() + (slidingPane.getPrefWidth() - lblStatus.getPrefWidth()));
-        toRightAnimation.play();
-        toRightAnimation.setOnFinished(event1 -> {
-            lblStatus.setText("USER");
-        });
-        tabPaneLogin.getSelectionModel().select(tabUser);
-    }
-
-    @FXML
-    void openAdminTab(MouseEvent event) {
-        TranslateTransition toLeftTransition = new TranslateTransition(new Duration(500), lblStatus);
-        toLeftTransition.setToX(slidingPane.getTranslateX());
-        toLeftTransition.play();
-        toLeftTransition.setOnFinished((ActionEvent event2) -> {
-            lblStatus.setText("ADMINISTRATOR");
-        });
-        tabPaneLogin.getSelectionModel().select(tabAdmin);
-    }
 
     @FXML
     void openCreateAccountScene(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/fxml/CreateAccountView.fxml"));
-        Scene LoginScene = lblAdmin.getScene();
+        Scene LoginScene = lblCreateAccount.getScene();
         root.translateYProperty().set(LoginScene.getHeight());
         rootPane.getChildren().add(root);
         Timeline timeline = new Timeline();
@@ -287,7 +252,7 @@ public class LoginViewController implements Initializable {
                     alert.showAndWait();
 
                     Parent root = FXMLLoader.load(getClass().getResource("/view/fxml/LoginView.fxml"));
-                    Scene LoginScene = lblAdmin.getScene();
+                    Scene LoginScene = lblCreateAccount.getScene();
                     root.translateXProperty().set(LoginScene.getWidth());
                     rootPane.getChildren().add(root);
                     Timeline timeline = new Timeline();
@@ -315,5 +280,12 @@ public class LoginViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Image image = new Image("/resource/cache/avatar.jpg");
+        avatarView.setImage(image);
+
+        Tooltip tooltip = new Tooltip();
+        tooltip.setText("test");
+        userNameTextField.setTooltip(tooltip);
+        
     }
 }

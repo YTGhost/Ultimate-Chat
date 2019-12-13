@@ -1,73 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gn.GNAvatarView?>
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="rootPane" stylesheets="@css/Login-Create.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.LoginViewController">
+<StackPane fx:id="rootPane" stylesheets="@css/Login.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.LoginViewController">
     <children>
         <AnchorPane fx:id="anchorPane" prefHeight="644.0" prefWidth="940.0" styleClass="login-bg">
             <children>
-                <AnchorPane layoutX="472.0" layoutY="106.0" prefHeight="433.0" prefWidth="388.0" style="-fx-background-color: #FFF; -fx-background-radius: 10px;">
+                <AnchorPane layoutX="143.0" layoutY="84.0" prefHeight="455.0" prefWidth="676.0" style="-fx-background-color: #FFF; -fx-background-radius: 10px;">
                     <effect>
                         <DropShadow color="#1e0213" />
                     </effect>
                     <children>
-                        <TabPane fx:id="tabPaneLogin" layoutX="14.0" layoutY="93.0" prefHeight="268.0" prefWidth="361.0" tabClosingPolicy="UNAVAILABLE">
-                            <tabs>
-                                <Tab fx:id="tabAdmin" text="ADMIN">
-                                    <content>
-                                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                            <children>
-                                                <JFXButton fx:id="adminLoginButtion" layoutX="111.0" layoutY="168.0" prefHeight="51.0" prefWidth="138.0" styleClass="btn-login" text="LOGIN" />
-                                                <JFXTextField fx:id="adminNameTextField" focusColor="#e432e4" labelFloat="true" layoutX="46.0" layoutY="14.0" prefHeight="30.0" prefWidth="267.0" promptText="Admin Username">
-                                                    <font>
-                                                        <Font name="System Bold" size="13.0" />
-                                                    </font>
-                                                </JFXTextField>
-                                    <JFXPasswordField fx:id="adminPasswordTextField" focusColor="#cc27c7" labelFloat="true" layoutX="47.0" layoutY="94.0" prefHeight="28.0" prefWidth="267.0" promptText="Admin Password">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </JFXPasswordField>
-                                            </children>
-                                        </AnchorPane>
-                                    </content>
-                                </Tab>
-                                <Tab fx:id="tabUser" text="USER">
-                                    <content>
-                                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                            <children>
-                                                <JFXButton fx:id="userLoginButtion" layoutX="112.0" layoutY="168.0" onMouseClicked="#userlogin" prefHeight="51.0" prefWidth="138.0" styleClass="btn-login" text="LOGIN" />
-                                                <JFXTextField fx:id="userNameTextField" focusColor="#e432e4" labelFloat="true" layoutX="48.0" layoutY="14.0" prefHeight="30.0" prefWidth="267.0" promptText="Username">
-                                                    <font>
-                                                        <Font name="System Bold" size="13.0" />
-                                                    </font>
-                                                </JFXTextField>
-                                    <JFXPasswordField fx:id="userPasswordTextField" focusColor="#cc27c7" labelFloat="true" layoutX="48.0" layoutY="95.0" prefHeight="28.0" prefWidth="267.0" promptText="Password">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </JFXPasswordField>
-                                            </children>
-                                        </AnchorPane>
-                                    </content>
-                                </Tab>
-                            </tabs>
-                        </TabPane>
-                        <Label fx:id="lblCreateAccount" alignment="CENTER" contentDisplay="CENTER" layoutX="84.0" layoutY="399.0" onMouseClicked="#openCreateAccountScene" prefHeight="20.0" prefWidth="221.0" text="New Here? Create Account" textFill="#c3189d">
+                        <Label fx:id="lblCreateAccount" alignment="CENTER" contentDisplay="CENTER" layoutX="229.0" layoutY="409.0" onMouseClicked="#openCreateAccountScene" prefHeight="20.0" prefWidth="221.0" text="New Here? Create Account" textFill="#c3189d">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -75,36 +32,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Label>
-                        <Group>
-                            <children>
-                                <Pane fx:id="slidingPane" layoutX="29.0" layoutY="37.0" prefHeight="36.0" prefWidth="337.0">
-                                    <children>
-                                        <Label fx:id="lblUser" alignment="CENTER" layoutX="187.0" onMouseClicked="#openUserTab" prefHeight="35.0" prefWidth="150.0" text="USER">
-                                            <font>
-                                                <Font name="System Bold" size="16.0" />
-                                            </font>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                        </Label>
-                                        <Label fx:id="lblAdmin" alignment="CENTER" onMouseClicked="#openAdminTab" prefHeight="35.0" prefWidth="150.0" text="ADMINISTRATOR">
-                                            <font>
-                                                <Font name="System Bold" size="16.0" />
-                                            </font>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                        </Label>
-                                        <Label fx:id="lblStatus" layoutY="1.0" prefHeight="35.0" prefWidth="160.0" styleClass="lbl-status" text="ADMINISTRATOR">
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                        </Label>
-                                    </children>
-                                </Pane>
-                            </children>
-                        </Group>
-                  <Label fx:id="lblForgetPassword" layoutX="86.0" layoutY="371.0" onMouseClicked="#openForgetPasswordScene" text="Forget password？Click here" textFill="#c3189d">
+                  <Label fx:id="lblForgetPassword" layoutX="232.0" layoutY="377.0" onMouseClicked="#openForgetPasswordScene" text="Forget password？Click here" textFill="#c3189d">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -112,16 +40,42 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
+                            <AnchorPane layoutX="149.0" layoutY="40.0" prefHeight="347.0" prefWidth="379.0">
+                                <children>
+                                    <JFXButton fx:id="userLoginButtion" layoutX="121.0" layoutY="273.0" onMouseClicked="#userlogin" prefHeight="51.0" prefWidth="138.0" styleClass="btn-login" text="LOGIN" />
+                                    <JFXTextField id="Account" fx:id="userNameTextField" focusColor="#e432e4" labelFloat="true" layoutX="56.0" layoutY="122.0" prefHeight="30.0" prefWidth="267.0" promptText="Account">
+                                        <font>
+                                            <Font name="System Bold" size="13.0" />
+                                        </font>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                                    </JFXTextField>
+                        <JFXPasswordField id="Password" fx:id="userPasswordTextField" focusColor="#cc27c7" labelFloat="true" layoutX="56.0" layoutY="190.0" prefHeight="28.0" prefWidth="267.0" promptText="Password">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </JFXPasswordField>
+                        <GNAvatarView id="avatar" fx:id="avatarView" layoutX="141.0" layoutY="30.0" prefHeight="79.0" prefWidth="97.0" />
+                        <JFXCheckBox checkedColor="#c31399" layoutX="206.0" layoutY="243.0" text="Remember" />
+                        <JFXCheckBox checkedColor="#c31399" layoutX="84.0" layoutY="243.0" text="Auto" />
+                                </children>
+                            </AnchorPane>
                     </children>
                 </AnchorPane>
-            <ImageView fx:id="closeImageView" fitHeight="30.0" fitWidth="30.0" layoutX="896.0" layoutY="14.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
+            <JFXButton id="mini" layoutX="845.0" layoutY="14.0" onMouseClicked="#min" prefHeight="36.0" prefWidth="37.0" />
+            <JFXButton id="close" layoutX="889.0" layoutY="14.0" onMouseClicked="#close" prefHeight="36.0" prefWidth="37.0" />
+            <Label layoutX="79.0" prefHeight="78.0" prefWidth="274.0" text="Ultimate-Chat" textFill="WHITE">
+               <font>
+                  <Font name="Rage Italic" size="50.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="56.0" fitWidth="76.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/icons8_multiply_32px.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="minImageView" fitHeight="30.0" fitWidth="30.0" layoutX="860.0" layoutY="14.0" onMouseClicked="#min" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/icons8_minus_math_32px.png" />
+                  <Image url="@../../resource/image/chat.png" />
                </image>
             </ImageView>
             </children>

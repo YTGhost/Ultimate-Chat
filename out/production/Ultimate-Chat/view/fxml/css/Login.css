@@ -1,0 +1,78 @@
+.login-bg{
+    -fx-background-color: linear-gradient(to top,#c31399,#9118fd);
+    /*-fx-background-image:url("/resource/image/1.jpg");*/
+}
+.btn-login{
+    -fx-background-color: #9013fb;
+    -fx-font-weight: 600;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-background-radius: 8px;
+}
+.lbl-user{
+    -fx-alignment: center
+}
+.account-bg{
+    -fx-background-color: linear-gradient(to top,#0082bc,#01d8db);
+    /*-fx-background-image:url("/resource/image/3.jpg");*/
+}
+#Account{
+    -fx-background-image: url("/resource/image/user.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px center;
+}
+#Password{
+    -fx-background-image: url("/resource/image/lock.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px center;
+}
+
+#Account:focused
+{
+    -fx-background-image: url("/resource/image/user-focused.png");
+    -fx-background-radius: 20px;
+    -fx-background-color: white;
+    -fx-border-radius: 20px;
+    -fx-border-color: transparent;
+
+}
+#Password:focused
+{
+    -fx-background-image: url("/resource/image/lock-focused.png");
+    -fx-background-radius: 20px;
+    -fx-background-color: white;
+    -fx-border-radius: 20px;
+    -fx-border-color: transparent;
+
+}
+
+#mini{
+    -fx-background-image:url("/resource/image/mini.png");
+    -fx-background-size:28px 28px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:center;
+    -fx-background-color:transparent;
+}
+#mini:hover,mini:pressed{
+    -fx-background-image:url("/resource/image/mini-focused.png");
+    -fx-background-size:28px 28px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:center;
+    -fx-background-color:rgb(241,241,241);
+    -fx-focused:hand;
+}
+#close{
+    -fx-background-image:url("/resource/image/close.png");
+    -fx-background-size:18px 18px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color:transparent;
+    -fx-background-position:center;
+}
+#close:hover,close:pressed{
+    -fx-background-image:url("/resource/image/close.png");
+    -fx-background-size:21px 21px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color:#ff5438;
+    -fx-background-position:center;
+    -fx-focused:hand;
+}
