@@ -72,3 +72,33 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: 8px center;
 }
+
+#NameValidation{
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px center;
+}
+
+#PasswordValidation1{
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px center;
+}
+
+#PasswordValidation2{
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px center;
+}
+
+#PasswordValidation3{
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px center;
+}
+
+#VerifyValidation{
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px center;
+}
+
+#TelephoneValidation{
+     -fx-background-repeat: no-repeat;
+     -fx-background-position: 8px center;
+}

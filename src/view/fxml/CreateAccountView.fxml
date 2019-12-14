@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
 <?import com.gn.GNAvatarView?>
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -10,6 +12,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="anchorPane" prefHeight="644.0" prefWidth="940.0" styleClass="account-bg" stylesheets="@css/Create.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.CreateAccountViewController">
@@ -24,7 +27,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <JFXTextField id="Account" fx:id="usernameField" focusColor="#01d8db" labelFloat="true" layoutX="398.0" layoutY="84.0" prefHeight="30.0" prefWidth="267.0" promptText="Username">
+            <JFXTextField id="Account" fx:id="nameField" focusColor="#01d8db" labelFloat="true" layoutX="252.0" layoutY="67.0" prefHeight="30.0" prefWidth="267.0" promptText="Username">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -38,7 +41,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <JFXPasswordField id="Password" fx:id="passwordField" focusColor="#01d8db" labelFloat="true" layoutX="398.0" layoutY="136.0" prefHeight="30.0" prefWidth="267.0" promptText="Password">
+            <JFXPasswordField id="Password" fx:id="passwordField" focusColor="#01d8db" labelFloat="true" layoutX="252.0" layoutY="153.0" prefHeight="30.0" prefWidth="267.0" promptText="Password">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -46,11 +49,11 @@
                   <Insets left="30.0" />
                </padding>
             </JFXPasswordField>
-            <JFXDatePicker id="Calendar" fx:id="birthdayPicker" defaultColor="#01d8db" layoutX="398.0" layoutY="357.0" prefHeight="30.0" prefWidth="267.0" promptText="pick your birthday">
+            <JFXDatePicker id="Calendar" fx:id="birthdayPicker" defaultColor="#01d8db" layoutX="252.0" layoutY="354.0" prefHeight="30.0" prefWidth="267.0" promptText="pick your birthday">
                <padding>
                   <Insets left="30.0" />
                </padding></JFXDatePicker>
-            <JFXPasswordField id="Verify" fx:id="verifyField" focusColor="#01d8db" labelFloat="true" layoutX="398.0" layoutY="251.0" prefHeight="30.0" prefWidth="267.0" promptText="Verify">
+            <JFXPasswordField id="Verify" fx:id="verifyField" focusColor="#01d8db" labelFloat="true" layoutX="253.0" layoutY="235.0" prefHeight="30.0" prefWidth="267.0" promptText="Verify">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -58,16 +61,53 @@
                   <Insets left="30.0" />
                </padding>
             </JFXPasswordField>
-            <GNAvatarView layoutX="82.0" layoutY="67.0" prefHeight="138.0" prefWidth="150.0" />
-            <JFXPasswordField id="Telephone" fx:id="telephoneField" focusColor="#01d8db" labelFloat="true" layoutX="398.0" layoutY="304.0" prefHeight="30.0" prefWidth="267.0" promptText="Telephone">
+            <GNAvatarView fx:id="avatarView" layoutX="54.0" layoutY="67.0" prefHeight="130.0" prefWidth="150.0" />
+            <JFXButton fx:id="load" layoutX="102.0" layoutY="220.0" onMouseClicked="#loadAvatar" styleClass="btn-login" text="Load" />
+            <JFXCheckBox fx:id="manCheckBox" checkedColor="#01d8db" layoutX="282.0" layoutY="410.0" onMouseClicked="#manSelect" text="Man" />
+            <JFXCheckBox fx:id="girlCheckBox" checkedColor="#01d8db" layoutX="421.0" layoutY="410.0" onMouseClicked="#girlSelect" text="Girl" />
+            <VBox layoutX="520.0" layoutY="123.0" prefHeight="90.0" prefWidth="221.0">
+               <children>
+                  <JFXTextField id="PasswordValidation1" fx:id="passwordValidation1" editable="false" focusColor="WHITE" prefHeight="32.0" prefWidth="214.0" unFocusColor="WHITE">
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </JFXTextField>
+                  <JFXTextField id="PasswordValidation2" fx:id="passwordValidation2" editable="false" focusColor="WHITE" prefHeight="32.0" prefWidth="214.0" unFocusColor="WHITE">
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </JFXTextField>
+                  <JFXTextField id="PasswordValidation3" fx:id="passwordValidation3" editable="false" focusColor="WHITE" prefHeight="32.0" prefWidth="214.0" unFocusColor="WHITE">
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </JFXTextField>
+               </children>
+            </VBox>
+            <JFXTextField id="TelephoneValidation" fx:id="telephoneValidation" editable="false" focusColor="WHITE" layoutX="520.0" layoutY="294.0" prefHeight="32.0" prefWidth="214.0" unFocusColor="WHITE">
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </JFXTextField>
+            <JFXTextField id="Telephone" fx:id="telephoneField" focusColor="#01d8db" labelFloat="true" layoutX="252.0" layoutY="295.0" prefHeight="30.0" prefWidth="267.0" promptText="Telephone">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
                <padding>
                   <Insets left="30.0" />
                </padding>
-            </JFXPasswordField>
-            <JFXButton layoutX="129.0" layoutY="221.0" styleClass="btn-login" text="Load" />
+            </JFXTextField>
+            <JFXTextField id="NameValidation" fx:id="nameValidation" editable="false" focusColor="WHITE" layoutX="520.0" layoutY="66.0" prefHeight="32.0" prefWidth="214.0" unFocusColor="WHITE">
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </JFXTextField>
+            <JFXTextField id="VerifyValidation" fx:id="verifyValidation" editable="false" focusColor="WHITE" layoutX="519.0" layoutY="234.0" prefHeight="32.0" prefWidth="249.0" unFocusColor="WHITE">
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </JFXTextField>
+            <ToggleButtonGroup layoutX="80.0" layoutY="354.0" selectionType="SINGLE" />
          </children>
          <effect>
             <DropShadow color="#1e0213" />

@@ -30,6 +30,10 @@ public class Manager {
         return manager;
     }
 
+    public Stage getStage(){
+        return stage;
+    }
+
     public Manager(){
 
     }
