@@ -23,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import javafx.util.Pair;
 import manager.Manager;
@@ -297,6 +298,7 @@ public class LoginViewController implements Initializable {
 
         // 初始化最初显示的icon为在线，此时status也为1
         statusButton.setStyle(String.format("-fx-graphic:url(/resource/image/online.png)"));
+        avatarView.setStroke(Color.GREEN);
 
         // 设置contextMenu在button上
         ContextMenu contextMenu = new ContextMenu();
@@ -314,6 +316,7 @@ public class LoginViewController implements Initializable {
             public void handle(ActionEvent event) {
                 status = 1;
                 statusButton.setStyle(String.format("-fx-graphic:url(/resource/image/online.png)"));
+                avatarView.setStroke(Color.GREEN);
             }
         });
 
@@ -323,6 +326,7 @@ public class LoginViewController implements Initializable {
             public void handle(ActionEvent event) {
                 status = 2;
                 statusButton.setStyle(String.format("-fx-graphic:url(/resource/image/concealed.png)"));
+                avatarView.setStroke(Color.YELLOW);
             }
         });
 
@@ -332,6 +336,7 @@ public class LoginViewController implements Initializable {
             public void handle(ActionEvent event) {
                 status = 3;
                 statusButton.setStyle(String.format("-fx-graphic:url(/resource/image/busy.png)"));
+                avatarView.setStroke(Color.RED);
             }
         });
 
