@@ -40,7 +40,7 @@ public class Manager {
 
     private void connect(){
         try {
-            socket = new Socket("127.0.0.1",30000);
+            socket = new Socket("182.92.66.200",30000);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintStream(socket.getOutputStream());
         } catch (IOException e) {

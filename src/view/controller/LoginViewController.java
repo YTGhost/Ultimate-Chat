@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -81,6 +82,13 @@ public class LoginViewController implements Initializable {
 
     @FXML
     private GNAvatarView avatarView;
+
+    @FXML
+    private JFXButton statusButton;
+
+    @FXML
+    private int status = 1;
+
 
     @FXML
     void openForgetPasswordScene(MouseEvent event){
@@ -286,6 +294,57 @@ public class LoginViewController implements Initializable {
         Tooltip tooltip = new Tooltip();
         tooltip.setText("test");
         userNameTextField.setTooltip(tooltip);
-        
+
+        // 初始化最初显示的icon为在线，此时status也为1
+        statusButton.setStyle(String.format("-fx-graphic:url(/resource/image/online.png)"));
+
+        // 设置contextMenu在button上
+        ContextMenu contextMenu = new ContextMenu();
+        MenuItem menuItem1 = new MenuItem("online");
+        MenuItem menuItem2 = new MenuItem("concealed");
+        MenuItem menuItem3 = new MenuItem("busy");
+
+        menuItem1.setStyle(String.format("-fx-graphic:url(/resource/image/online.png)"));
+        menuItem2.setStyle(String.format("-fx-graphic:url(/resource/image/concealed.png)"));
+        menuItem3.setStyle(String.format("-fx-graphic:url(/resource/image/busy.png)"));
+
+        // 选择在线状态
+        menuItem1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                status = 1;
+                statusButton.setStyle(String.format("-fx-graphic:url(/resource/image/online.png)"));
+            }
+        });
+
+        // 选择隐身状态
+        menuItem2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                status = 2;
+                statusButton.setStyle(String.format("-fx-graphic:url(/resource/image/concealed.png)"));
+            }
+        });
+
+        // 选择忙碌状态
+        menuItem3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                status = 3;
+                statusButton.setStyle(String.format("-fx-graphic:url(/resource/image/busy.png)"));
+            }
+        });
+
+        // 将menuItem加到contextmenu中
+        contextMenu.getItems().addAll(menuItem1, menuItem2, menuItem3);
+        statusButton.setContextMenu(contextMenu);
+
+        // 为了左键单击时contextMenu也能显示
+        statusButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                contextMenu.show(avatarView.getScene().getWindow());
+            }
+        });
     }
 }

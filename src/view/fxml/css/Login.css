@@ -9,6 +9,11 @@
     -fx-font-size: 15px;
     -fx-background-radius: 8px;
 }
+
+#Login:hover{
+    -fx-background-color: #C1139D;
+}
+
 .lbl-user{
     -fx-alignment: center
 }

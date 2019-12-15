@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
 <?import com.gn.GNAvatarView?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
@@ -107,12 +106,10 @@
                   <Insets left="30.0" />
                </padding>
             </JFXTextField>
-            <ToggleButtonGroup layoutX="80.0" layoutY="354.0" selectionType="SINGLE" />
          </children>
          <effect>
             <DropShadow color="#1e0213" />
          </effect>
       </AnchorPane>
-      <AnchorPane layoutX="161.0" layoutY="248.0" />
    </children>
 </AnchorPane>

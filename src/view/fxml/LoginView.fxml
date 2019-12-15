@@ -42,7 +42,7 @@
                   </Label>
                             <AnchorPane layoutX="149.0" layoutY="40.0" prefHeight="347.0" prefWidth="379.0">
                                 <children>
-                                    <JFXButton fx:id="userLoginButtion" layoutX="121.0" layoutY="273.0" onMouseClicked="#userlogin" prefHeight="51.0" prefWidth="138.0" styleClass="btn-login" text="LOGIN" />
+                                    <JFXButton id="Login" fx:id="userLoginButtion" layoutX="121.0" layoutY="273.0" onMouseClicked="#userlogin" prefHeight="51.0" prefWidth="138.0" styleClass="btn-login" text="LOGIN" />
                                     <JFXTextField id="Account" fx:id="userNameTextField" focusColor="#e432e4" labelFloat="true" layoutX="56.0" layoutY="122.0" prefHeight="30.0" prefWidth="267.0" promptText="Account">
                                         <font>
                                             <Font name="System Bold" size="13.0" />
@@ -62,6 +62,7 @@
                         <GNAvatarView id="avatar" fx:id="avatarView" layoutX="141.0" layoutY="30.0" prefHeight="79.0" prefWidth="97.0" />
                         <JFXCheckBox checkedColor="#c31399" layoutX="206.0" layoutY="243.0" text="Remember" />
                         <JFXCheckBox checkedColor="#c31399" layoutX="84.0" layoutY="243.0" text="Auto" />
+                        <JFXButton fx:id="statusButton" layoutX="206.0" layoutY="79.0" prefHeight="30.0" prefWidth="0.0" />
                                 </children>
                             </AnchorPane>
                     </children>

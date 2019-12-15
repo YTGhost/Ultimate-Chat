@@ -62,8 +62,8 @@
             </JFXPasswordField>
             <GNAvatarView fx:id="avatarView" layoutX="54.0" layoutY="67.0" prefHeight="130.0" prefWidth="150.0" />
             <JFXButton fx:id="load" layoutX="102.0" layoutY="220.0" onMouseClicked="#loadAvatar" styleClass="btn-login" text="Load" />
-            <JFXCheckBox fx:id="manCheckBox" checkedColor="#01d8db" layoutX="282.0" layoutY="410.0" onMouseClicked="#manSelect" text="男" />
-            <JFXCheckBox fx:id="girlCheckBox" checkedColor="#01d8db" layoutX="421.0" layoutY="410.0" onMouseClicked="#girlSelect" text="女" />
+            <JFXCheckBox fx:id="manCheckBox" checkedColor="#01d8db" layoutX="282.0" layoutY="410.0" onMouseClicked="#manSelect" text="Man" />
+            <JFXCheckBox fx:id="girlCheckBox" checkedColor="#01d8db" layoutX="421.0" layoutY="410.0" onMouseClicked="#girlSelect" text="Girl" />
             <VBox layoutX="520.0" layoutY="123.0" prefHeight="90.0" prefWidth="221.0">
                <children>
                   <JFXTextField id="PasswordValidation1" fx:id="passwordValidation1" editable="false" focusColor="WHITE" prefHeight="32.0" prefWidth="214.0" unFocusColor="WHITE">
@@ -111,6 +111,5 @@
             <DropShadow color="#1e0213" />
          </effect>
       </AnchorPane>
-      <AnchorPane layoutX="161.0" layoutY="248.0" />
    </children>
 </AnchorPane>
