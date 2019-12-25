@@ -26,6 +26,7 @@ import javafx.stage.FileChooser;
 import javafx.util.Duration;
 import manager.Manager;
 import org.mindrot.jbcrypt.BCrypt;
+import utils.Notify;
 import utils.convertImage;
 
 import java.io.File;
@@ -40,6 +41,7 @@ import java.util.StringTokenizer;
  * @author 邓梁
  * @date 2019/12/12 13:58
  * @email 18221221@bjtu.edu.cn
+ * CreateAccountView的操纵类
  */
 public class CreateAccountViewController implements Initializable {
 
@@ -83,7 +85,7 @@ public class CreateAccountViewController implements Initializable {
     private JFXDatePicker birthdayPicker;
 
     @FXML
-    private JFXCheckBox manCheckBox;
+    private JFXCheckBox boyCheckBox;
 
     @FXML
     private JFXCheckBox girlCheckBox;
@@ -120,6 +122,7 @@ public class CreateAccountViewController implements Initializable {
 
     @FXML
     private String suffix;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -249,7 +252,7 @@ public class CreateAccountViewController implements Initializable {
     }
 
     @FXML
-    void manSelect(MouseEvent event) {
+    void boySelect(MouseEvent event) {
         sexSign = 1;
         if (girlCheckBox.isSelected()) {
             girlCheckBox.setSelected(false);
@@ -259,8 +262,8 @@ public class CreateAccountViewController implements Initializable {
     @FXML
     void girlSelect(MouseEvent event) {
         sexSign = 1;
-        if (manCheckBox.isSelected()) {
-            manCheckBox.setSelected(false);
+        if (boyCheckBox.isSelected()) {
+            boyCheckBox.setSelected(false);
         }
     }
 
@@ -273,7 +276,11 @@ public class CreateAccountViewController implements Initializable {
                 new FileChooser.ExtensionFilter("JPG", "*.jpg"),
                 new FileChooser.ExtensionFilter("PNG", "*.png")
         );
-        avatar = fileChooser.showOpenDialog(Manager.getManager().getStage());
+        File temp = fileChooser.showOpenDialog(Manager.getManager().getStage());
+        if (temp == null){
+            return;
+        }
+        avatar = temp;
         String fileName = avatar.getName();
         suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
 
@@ -312,7 +319,7 @@ public class CreateAccountViewController implements Initializable {
         String birthday = null;
         byte[] avatar = convertImage.getConvertImage().toByteArray(this.avatar, this.suffix);
         int sex;
-        if (manCheckBox.isSelected()) {
+        if (boyCheckBox.isSelected()) {
             sex = 1;
         } else {
             sex = 0;
@@ -375,49 +382,49 @@ public class CreateAccountViewController implements Initializable {
 
         Manager.getManager().out("REGISTER" + "#" + username + " " + password + " " + telephone + " " + birthday
                 + " " + sex + " " + Arrays.toString(avatar));
+        Notify.getInstance().toNotify();
 
-        String content = null;
-        while ((content = Manager.getManager().in()) != null) {
-            System.out.println(content);
-            StringTokenizer parse = new StringTokenizer(content, " ");
-            String sign = parse.nextToken();
+        String content = Manager.getManager().content;
 
-            if (sign.equals("Exist")) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Dialog");
-                alert.setHeaderText("Telephone exists");
-                alert.setContentText("Please change your Telephone");
+        StringTokenizer parse = new StringTokenizer(content, " ");
+        String sign = parse.nextToken();
+
+        if (sign.equals("Exist")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Telephone exists");
+            alert.setContentText("Please change your Telephone");
+            alert.showAndWait();
+            return;
+        } else if (sign.equals("SEND_verification_code")) {
+            String code = parse.nextToken();
+            TextInputDialog textInputDialog = new TextInputDialog("Please enter a six-digit verification code");
+            textInputDialog.setTitle("SMS verification");
+            textInputDialog.setHeaderText("We have sent a verification code to your telephone, please check your telephone and fill in the six verification code");
+            textInputDialog.setContentText("Please enter the code:");
+            Optional<String> result = textInputDialog.showAndWait();
+            if (result.isPresent() && code.equals(result.get())) {
+                Manager.getManager().out("Success");
+                String account = null;
+                Notify.getInstance().toNotify();
+                account = Manager.getManager().content;
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Success Dialog");
+                alert.setHeaderText("Registered successfully");
+                alert.setContentText("You can sign in with account: " + account);
                 alert.showAndWait();
                 return;
-            } else if (sign.equals("SEND_verification_code")) {
-                String code = parse.nextToken();
-                TextInputDialog textInputDialog = new TextInputDialog("Please enter a six-digit verification code");
-                textInputDialog.setTitle("SMS verification");
-                textInputDialog.setHeaderText("We have sent a verification code to your telephone, please check your telephone and fill in the six verification code");
-                textInputDialog.setContentText("Please enter the code:");
-                Optional<String> result = textInputDialog.showAndWait();
-                if (result.isPresent() && code.equals(result.get())) {
-                    Manager.getManager().out("Success");
-                    String account = null;
-                    account = Manager.getManager().in();
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Success Dialog");
-                    alert.setHeaderText("Registered successfully");
-                    alert.setContentText("You can sign in with account: " + account);
-                    alert.showAndWait();
-                    return;
-                } else if (result.isPresent() && !code.equals(result.get())) {
-                    Manager.getManager().out("Fail");
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error Dialog");
-                    alert.setHeaderText("Register failed");
-                    alert.setContentText("Please check if the verification code is wrong");
-                    alert.showAndWait();
-                    return;
-                } else {
-                    Manager.getManager().out("Fail");
-                    return;
-                }
+            } else if (result.isPresent() && !code.equals(result.get())) {
+                Manager.getManager().out("Fail");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Register failed");
+                alert.setContentText("Please check if the verification code is wrong");
+                alert.showAndWait();
+                return;
+            } else {
+                Manager.getManager().out("Fail");
+                return;
             }
         }
     }

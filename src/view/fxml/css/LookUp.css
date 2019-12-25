@@ -1,0 +1,41 @@
+.background{
+    -fx-background-color: linear-gradient(to top,#0082bc,#01d8db);
+}
+#textInput1{
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 28px 28px;
+    -fx-background-position: 10px 8px;
+    -fx-background-image: url("/resource/image/lookup.png");
+    -fx-background-radius: 20px;
+    -fx-background-color: white;
+    -fx-border-radius: 20px;
+    -fx-border-color: rgb(180,180,180);
+
+}
+#textInput1:focused{
+    -fx-background-image: url("/resource/image/lookup-focused.png");
+    -fx-border-color: rgb(150,150,150);
+}
+#textInput2{
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 28px 28px;
+    -fx-background-position: 10px 8px;
+    -fx-background-image: url("/resource/image/lookup.png");
+    -fx-background-radius: 20px;
+    -fx-background-color: white;
+    -fx-border-radius: 20px;
+    -fx-border-color: rgb(180,180,180);
+
+}
+#textInput2:focused{
+    -fx-background-image: url("/resource/image/lookup-focused.png");
+    -fx-border-color: rgb(150,150,150);
+}
+
+#FriendsList{
+    -fx-background-color: transparent;
+}
+#GroupsList{
+    -fx-background-color: transparent;
+}
+

@@ -1,0 +1,106 @@
+#Friends{
+
+}
+
+#TopPane{
+    /*-fx-background-color: linear-gradient(to top,#0082bc,#01d8db);*/
+    -fx-background-color: #0082bc;
+}
+.button:hover{
+    -fx-background-color: #ebebec;
+}
+
+.titled-pane > .title
+{
+    -fx-background-color: #ffffff;
+}
+
+#menu{
+    -fx-background-image:url("/resource/image/menu.png");
+    -fx-background-size:28px 28px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:center;
+    -fx-background-color:transparent;
+}
+#menu:hover,mini:pressed{
+    -fx-background-image:url("/resource/image/menu-focused.png");
+    -fx-background-size:28px 28px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:center;
+    -fx-background-color:rgb(241,241,241);
+    -fx-focused:hand;
+}
+#mini{
+    -fx-background-image:url("/resource/image/mini.png");
+    -fx-background-size:28px 28px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:center;
+    -fx-background-color:transparent;
+}
+#mini:hover,mini:pressed{
+    -fx-background-image:url("/resource/image/mini-focused.png");
+    -fx-background-size:28px 28px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:center;
+    -fx-background-color:rgb(241,241,241);
+    -fx-focused:hand;
+}
+#close{
+    -fx-background-image:url("/resource/image/close.png");
+    -fx-background-size:18px 18px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color:transparent;
+    -fx-background-position:center;
+}
+#close:hover,close:pressed{
+    -fx-background-image:url("/resource/image/close.png");
+    -fx-background-size:21px 21px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color:#ff5438;
+    -fx-background-position:center;
+    -fx-focused:hand;
+}
+
+#button{
+    -fx-graphic: url("/resource/cache/avatar.jpg");
+}
+
+#ListPane{
+    -fx-background-color: #ffffff;
+}
+
+#lookup{
+    -fx-background-image:url("/resource/image/lookup.png");
+    -fx-background-size:28px 28px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:center;
+    -fx-background-color:transparent;
+}
+#lookup:hover,mini:pressed{
+    -fx-background-image:url("/resource/image/lookup-focused.png");
+    -fx-background-size:28px 28px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:center;
+    -fx-background-color:rgb(241,241,241);
+    -fx-focused:hand;
+}
+
+.icon{
+    -fx-text-fill: #FE774D;
+    -fx-padding: 10.0;
+    -fx-cursor: hand;
+}
+
+.icons-badge .badge-pane {
+    -fx-background-color:#ff4081;
+    -fx-background-radius:23.0;
+    -fx-pref-width: 23.0;
+    -fx-pref-height: 23.0;
+    -fx-alignment: center;
+}
+
+.icons-badge Label{
+    -fx-font-weight: BOLD;
+    -fx-font-size: 13.0px;
+    -fx-text-fill: WHITE;
+}

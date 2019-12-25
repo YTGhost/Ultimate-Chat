@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gn.GNAvatarView?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="anchorPane" prefHeight="581.0" prefWidth="690.0" styleClass="background" stylesheets="@css/LookUp.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.ApplyAddController">
+   <children>
+      <GNAvatarView fx:id="avatarView" layoutX="54.0" layoutY="167.0" prefHeight="124.0" prefWidth="134.0" />
+      <Label layoutX="254.0" layoutY="57.0" prefHeight="55.0" prefWidth="182.0" text="Friend Apply" textFill="#8814da">
+         <font>
+            <Font name="Rage Italic" size="35.0" />
+         </font>
+      </Label>
+      <JFXTextArea fx:id="messageTextArea" editable="false" labelFloat="true" layoutX="254.0" layoutY="176.0" prefHeight="124.0" prefWidth="315.0" promptText="Verify Message" />
+      <JFXTextField fx:id="nameTextField" editable="false" labelFloat="true" layoutX="29.0" layoutY="336.0" promptText="Name" />
+      <JFXTextField fx:id="accountTextField" editable="false" labelFloat="true" layoutX="29.0" layoutY="402.0" promptText="Account" />
+      <JFXTextField fx:id="nicknameTextField" layoutX="274.0" layoutY="336.0" promptText="NickName" />
+      <JFXComboBox fx:id="groupComboBox" labelFloat="true" layoutX="274.0" layoutY="402.0" prefHeight="30.0" prefWidth="184.0" promptText="group" />
+      <JFXButton fx:id="acceptButton" layoutX="377.0" layoutY="468.0" onMouseClicked="#Accept" prefHeight="55.0" prefWidth="134.0" text="Accept" />
+      <JFXButton fx:id="refuseButton" layoutX="146.0" layoutY="468.0" onMouseClicked="#Refuse" prefHeight="55.0" prefWidth="134.0" text="Refuse" />
+   </children>
+</AnchorPane>

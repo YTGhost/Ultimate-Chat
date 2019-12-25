@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="chat" fx:id="anchorPane" prefHeight="581.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.ChatRoomController">
+   <children>
+      <AnchorPane prefHeight="52.0" prefWidth="690.0">
+         <children>
+            <JFXTextField fx:id="nameTextField" editable="false" layoutX="14.0" layoutY="11.0" unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXTextField>
+         </children></AnchorPane>
+      <JFXTextArea fx:id="messageTextArea" layoutY="423.0" prefHeight="158.0" prefWidth="690.0">
+         <padding>
+            <Insets top="40.0" />
+         </padding>
+      </JFXTextArea>
+      <JFXButton fx:id="imageButton" layoutX="-2.0" layoutY="423.0" onMouseClicked="#sendImage" prefHeight="32.0" prefWidth="32.0" />
+      <ScrollPane fx:id="scrollPane" layoutY="51.0" prefHeight="375.0" prefWidth="690.0">
+         <content>
+            <VBox fx:id="chatVBox" prefWidth="670.0" spacing="10.0" />
+         </content>
+      </ScrollPane>
+      <JFXButton fx:id="sendButton" layoutX="607.0" layoutY="537.0" onMouseClicked="#Send" text="Send" />
+   </children>
+</AnchorPane>

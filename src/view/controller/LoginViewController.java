@@ -4,7 +4,10 @@ import com.gn.GNAvatarView;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import javafx.animation.*;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,38 +30,21 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import javafx.util.Pair;
 import manager.Manager;
+import utils.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.StringTokenizer;
 
 /**
  * @author 邓梁
  * @date 2019/12/12 13:57
  * @email 18221221@bjtu.edu.cn
+ * LoginView的操纵类
  */
 public class LoginViewController implements Initializable {
-    @FXML // ResourceBundle that was given to the FXMLLoader
-    private ResourceBundle resources;
-
-    @FXML // URL location of the FXML file that was given to the FXMLLoader
-    private URL location;
-
-    @FXML // fx:id="slidingPane"
-    private Pane slidingPane; // Value injected by FXMLLoader
-
-    @FXML // fx:id="tabUser"
-    private Tab tabUser; // Value injected by FXMLLoader
-
-    @FXML // fx:id="lblUser"
-    private Label lblUser; // Value injected by FXMLLoader
-
-    @FXML // fx:id="tabAdmin"
-    private Tab tabAdmin; // Value injected by FXMLLoader
-
-    @FXML // fx:id="lblCreateAccount"
-    private Label lblCreateAccount; // Value injected by FXMLLoader
 
     @FXML
     public StackPane rootPane;
@@ -67,7 +53,28 @@ public class LoginViewController implements Initializable {
     public AnchorPane anchorPane;
 
     @FXML
-    private JFXTextField userNameTextField;
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
+
+    @FXML
+    private Pane slidingPane;
+
+    @FXML
+    private Tab tabUser;
+
+    @FXML
+    private Label lblUser;
+
+    @FXML
+    private Tab tabAdmin;
+
+    @FXML
+    private Label lblCreateAccount;
+
+    @FXML
+    private JFXTextField accountTextField;
 
     @FXML
     private JFXPasswordField userPasswordTextField;
@@ -92,36 +99,36 @@ public class LoginViewController implements Initializable {
 
 
     @FXML
-    void openForgetPasswordScene(MouseEvent event){
-        TextInputDialog textInputDialog = new TextInputDialog("Please enter your email");
-        textInputDialog.setTitle("E-mail verification");
-        textInputDialog.setHeaderText("Put your email here");
-        textInputDialog.setContentText("Please enter the email:");
+    void openForgetPasswordScene(MouseEvent event) {
+        TextInputDialog textInputDialog = new TextInputDialog("Please enter your telephone number");
+        textInputDialog.setTitle("SMS verification");
+        textInputDialog.setHeaderText("Put your telephone number here");
+        textInputDialog.setContentText("Please enter the telephone number:");
         Optional<String> result = textInputDialog.showAndWait();
-        if (result.isPresent()){
-            Manager.getManager().out("CHANGEPASSWORD_LoginView" + " " + result.get());
-        }else{
-            Manager.getManager().out("Verify failed");
+        if (result.isPresent()) {
+            Manager.getManager().out("FORGET#" + result.get());
+        } else {
             return;
         }
         String content = null;
-        content = Manager.getManager().in();
+        Notify.getInstance().toNotify();
+        content = Manager.getManager().content;
         System.out.println(content);
-        if (content.equals("No such email")){
+        if (content.equals("Not Found")) {
             Alert alert1 = new Alert(Alert.AlertType.ERROR);
             alert1.setTitle("Error Dialog");
-            alert1.setHeaderText("No such email");
+            alert1.setHeaderText("Not Found");
             alert1.setContentText("Please try again");
             alert1.showAndWait();
             return;
         }
         TextInputDialog textInputDialog2 = new TextInputDialog("Please enter a six-digit verification code");
-        textInputDialog.setTitle("E-mail verification");
-        textInputDialog.setHeaderText("We have sent a verification code to your email address. please check your email address and fill in the six verification code");
+        textInputDialog.setTitle("SMS verification");
+        textInputDialog.setHeaderText("We have sent a verification code to your telephone. please check your telephone and fill in the six verification code");
         textInputDialog.setContentText("Please enter the code:");
         Optional<String> result2 = textInputDialog.showAndWait();
 
-        if (result2.isPresent() && content.equals(result2.get())){
+        if (result2.isPresent() && content.equals(result2.get())) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Success Dialog");
             alert.setHeaderText("Check Success");
@@ -151,11 +158,7 @@ public class LoginViewController implements Initializable {
             grid.add(verifyField, 1, 1);
 
             Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
-//                loginButton.setDisable(true);
-//
-//                password.textProperty().addListener((observable, oldValue, newValue) -> {
-//                    loginButton.setDisable(newValue.trim().isEmpty());
-//                });
+
 
             dialog.getDialogPane().setContent(grid);
 
@@ -171,14 +174,14 @@ public class LoginViewController implements Initializable {
             Optional<Pair<String, String>> result1 = dialog.showAndWait();
 
             result1.ifPresent(usernamePassword -> {
-                if (usernamePassword.getKey().equals(usernamePassword.getValue())){
+                if (usernamePassword.getKey().equals(usernamePassword.getValue())) {
                     Manager.getManager().out(usernamePassword.getKey());
                     Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
                     alert1.setTitle("Success Dialog");
                     alert1.setHeaderText("You have successfully changed your password");
                     alert1.setContentText("Change Successfully");
                     alert1.showAndWait();
-                }else{
+                } else {
                     Alert alert1 = new Alert(Alert.AlertType.ERROR);
                     alert1.setTitle("Error Dialog");
                     alert1.setHeaderText("You set a different password twice");
@@ -186,7 +189,7 @@ public class LoginViewController implements Initializable {
                     alert1.showAndWait();
                 }
             });
-        }else if(result.isPresent() && !content.equals(result.get())){
+        } else if (result.isPresent() && !content.equals(result.get())) {
             Manager.getManager().out("Verify failed");
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
@@ -194,21 +197,20 @@ public class LoginViewController implements Initializable {
             alert.setContentText("Please check if the verification code is wrong");
             alert.showAndWait();
             return;
-        }else{
+        } else {
             return;
         }
     }
 
     @FXML
-    void min(MouseEvent event){
+    void min(MouseEvent event) {
         Manager.getManager().stage.setIconified(true);
     }
 
     @FXML
-    void close(MouseEvent event){
+    void close(MouseEvent event) {
         System.exit(0);
     }
-
 
     @FXML
     void openCreateAccountScene(MouseEvent event) throws IOException {
@@ -227,15 +229,16 @@ public class LoginViewController implements Initializable {
     }
 
     @FXML
-    void userlogin(MouseEvent event){
-        String username = userNameTextField.getText();
+    void userlogin(MouseEvent event) {
+        String account = accountTextField.getText();
         String password = userPasswordTextField.getText();
+        int status = this.status;
 
-        if (username.equals("")) {
+        if (account.equals("")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
-            alert.setHeaderText("You don't put username or email");
-            alert.setContentText("Please put username or email into TextField");
+            alert.setHeaderText("You don't put Account");
+            alert.setContentText("Please put Account into TextField");
             alert.showAndWait();
             return;
         }
@@ -243,44 +246,80 @@ public class LoginViewController implements Initializable {
         if (password.equals("")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
-            alert.setHeaderText("You don't put password or email");
+            alert.setHeaderText("You don't put password");
             alert.setContentText("Please put password into TextField");
             alert.showAndWait();
             return;
         }
 
-        Manager.getManager().out("USERLOGIN" + " " + username + " " + password);
-        String content = null;
+        Manager.getManager().out("LOGIN" + "#" + account + " " + password + " " + status);
+        Notify.getInstance().toNotify();
+        String content = Manager.getManager().content;
         try {
-            while((content = Manager.getManager().in())!=null){
-                if (content.equals("User verification Passed")){
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Success Dialog");
-                    alert.setHeaderText("Verification Success");
-                    alert.setContentText("User verification Passed");
-                    alert.showAndWait();
+            if (content.equals("User verification Passed")) {
 
-                    Parent root = FXMLLoader.load(getClass().getResource("/view/fxml/LoginView.fxml"));
-                    Scene LoginScene = lblCreateAccount.getScene();
-                    root.translateXProperty().set(LoginScene.getWidth());
-                    rootPane.getChildren().add(root);
-                    Timeline timeline = new Timeline();
-                    KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
-                    KeyFrame keyFrame = new KeyFrame(Duration.millis(900), keyValue);
-                    timeline.getKeyFrames().add(keyFrame);
-                    timeline.play();
-                    timeline.setOnFinished((ActionEvent event1) -> {
-                        rootPane.getChildren().remove(anchorPane);
-                    });
-                    return;
-                }else if (content.equals("User verification Failed")){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error Dialog");
-                    alert.setHeaderText("Verification Failed");
-                    alert.setContentText("User verification Failed");
-                    alert.showAndWait();
-                    return;
+                // 获得个人信息
+                Notify.getInstance().toNotify();
+                content = Manager.getManager().content;
+                StringTokenizer parse = new StringTokenizer(content, " ");
+                int age = Integer.parseInt(parse.nextToken());
+                int sex = Integer.parseInt(parse.nextToken());
+                String name = parse.nextToken();
+                String address = parse.nextToken();
+                String telephone = parse.nextToken();
+                String birthday = parse.nextToken();
+                byte[] avatar = convertImage.getConvertImage().stringToBytes(parse);
+                Manager.getManager().user = new User(account, name, age, sex, avatar, address, telephone, birthday, status);
+                Manager.getManager().setChatTo(account);
+
+
+                // 获取好友信息
+                Notify.getInstance().toNotify();
+                while(!(content = Manager.getManager().content).equals("**OVER**")){
+                    parse = new StringTokenizer(content, " ");
+                    String friendAccount = parse.nextToken();
+                    String friendName = parse.nextToken();
+                    int friendAge = Integer.parseInt(parse.nextToken());
+                    int friendSex = Integer.parseInt(parse.nextToken());
+                    String friendAddress = parse.nextToken();
+                    int friendStatus = Integer.parseInt(parse.nextToken());
+                    String friendTelephone = parse.nextToken();
+                    String friendBirthday = parse.nextToken();
+                    String Group = parse.nextToken();
+                    String nickname = parse.nextToken();
+                    byte[] friendAvatar = convertImage.getConvertImage().stringToBytes(parse);
+
+                    // 将信息添加至PersonButton中
+                    PersonButton personButton = new PersonButton(friendAccount, friendName, friendAge, friendSex,
+                            friendAvatar, friendAddress, friendStatus, friendTelephone, friendBirthday, Group, nickname);
+
+                    Manager.getRelationship().add(personButton);
+                    Notify.getInstance().toNotify();
                 }
+
+
+                Parent root = FXMLLoader.load(getClass().getResource("/view/fxml/ChatView.fxml"));
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success Dialog");
+                alert.setHeaderText("Verification Success");
+                alert.setContentText("User verification Passed");
+                alert.showAndWait();
+                changeScene.getChangeScene().fade(rootPane, root, anchorPane);
+                return;
+            } else if (content.equals("User verification Failed")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Verification Failed");
+                alert.setContentText("User verification Failed");
+                alert.showAndWait();
+                return;
+            } else if (content.equals("User is online")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("User is online");
+                alert.setContentText("User is online");
+                alert.showAndWait();
+                return;
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -289,12 +328,16 @@ public class LoginViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        changeScene.getChangeScene().setStackPane(rootPane);
+        changeScene.getChangeScene().setAnchorPane(anchorPane);
+
         Image image = new Image("/resource/cache/avatar.jpg");
         avatarView.setImage(image);
 
         Tooltip tooltip = new Tooltip();
         tooltip.setText("test");
-        userNameTextField.setTooltip(tooltip);
+        accountTextField.setTooltip(tooltip);
 
         // 初始化最初显示的icon为在线，此时status也为1
         statusButton.setStyle(String.format("-fx-graphic:url(/resource/image/online.png)"));

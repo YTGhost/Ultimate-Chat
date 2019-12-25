@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="lookUpPane" prefHeight="581.0" prefWidth="690.0" styleClass="background" stylesheets="@css/LookUp.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.LookUpController">
+   <children>
+      <JFXTabPane fx:id="tabPane" prefHeight="581.0" prefWidth="690.0">
+         <tabs>
+            <Tab text="Friends">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="47.0" prefWidth="260.0" text="Search For Friends" textFill="#8814da">
+                           <font>
+                              <Font name="Rage Italic" size="35.0" />
+                           </font>
+                        </Label>
+                        <TextField id="textInput1" fx:id="friendsTextField" layoutX="14.0" layoutY="69.0" onKeyPressed="#searchFriends" prefHeight="48.0" prefWidth="385.0" promptText="Enter the account you want to find">
+                           <padding>
+                              <Insets left="40.0" />
+                           </padding>
+                        </TextField>
+                        <JFXButton fx:id="friendButton" layoutX="14.0" layoutY="188.0" prefHeight="86.0" prefWidth="538.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gn.GNAvatarView?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="581.0" prefWidth="690.0" styleClass="background" stylesheets="@css/LookUp.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.FriendInfoController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="151.0" layoutY="31.0" prefHeight="55.0" prefWidth="362.0" text="Friend Information" textFill="#8814da">
+         <font>
+            <Font name="Rage Italic" size="35.0" />
+         </font>
+      </Label>
+      <GNAvatarView fx:id="avatarView" layoutX="257.0" layoutY="94.0" prefHeight="150.0" prefWidth="150.0" />
+      <JFXTextField fx:id="accountTextField" editable="false" labelFloat="true" layoutX="104.0" layoutY="276.0" promptText="Account" />
+      <JFXTextField fx:id="nameTextField" editable="false" labelFloat="true" layoutX="104.0" layoutY="324.0" promptText="name" />
+      <JFXTextField fx:id="ageTextField" editable="false" labelFloat="true" layoutX="104.0" layoutY="376.0" promptText="age" />
+      <JFXTextField fx:id="addressTextField" editable="false" labelFloat="true" layoutX="379.0" layoutY="276.0" promptText="address" />
+      <JFXTextField fx:id="telephoneTextField" editable="false" labelFloat="true" layoutX="379.0" layoutY="324.0" promptText="telephone" />
+      <JFXButton fx:id="returnButton" layoutX="407.0" layoutY="490.0" onMouseClicked="#back" prefHeight="47.0" prefWidth="94.0" text="Return" />
+      <JFXDatePicker fx:id="birthdayPicker" defaultColor="#01d8db" editable="false" layoutX="379.0" layoutY="376.0" promptText="birthday" />
+      <JFXCheckBox fx:id="boyCheckBox" layoutX="388.0" layoutY="437.0" onMouseClicked="#boySelect" text="Boy" />
+      <JFXCheckBox fx:id="girlCheckBox" layoutX="513.0" layoutY="437.0" onMouseClicked="#girlSelect" text="Girl" />
+      <JFXTextField fx:id="nicknameTextField" labelFloat="true" layoutX="104.0" layoutY="432.0" promptText="nickname" />
+      <JFXButton fx:id="saveButton" layoutX="172.0" layoutY="490.0" onMouseClicked="#save" prefHeight="47.0" prefWidth="94.0" text="Save" />
+   </children>
+</AnchorPane>
