@@ -104,7 +104,7 @@ public class Manager {
     // 用于与服务端连接
     private void connect() {
         try {
-            socket = new Socket("182.92.66.200", 30000);
+            socket = new Socket("###", 30000);
 //            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintStream(socket.getOutputStream());
         } catch (IOException e) {
